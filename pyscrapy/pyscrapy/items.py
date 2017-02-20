@@ -5,10 +5,21 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy.item import Item, Field
 
 
-class PyscrapyItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class SpiderItem(Item):
+    url = Field(serializers=unicode, required=True)
+    crawl_time = Field(serializers=unicode, required=True)
+
+class RecipeItem(SpiderItem):
+    name = Field(serializers=unicode, required=True)
+    price = Field(serializers=float, required=True)
+    description = Field(serializers=unicode,)
+    img_url = Field(serializers=unicode,)
+    prep_time = Field(serializers=unicode,)
+    servings = Field(serializers=unicode,)
+    direction = Field(serializers=unicode,)
+    products = Field(serializers=dict, )
+    ingredients = Field(serializers=unicode,)
+
