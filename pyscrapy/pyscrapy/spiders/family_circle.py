@@ -1,13 +1,17 @@
+from __future__ import (absolute_import, print_function, division,
 
+                                unicode_literals)
+
+from pyscrapy.items import RecipeItem
+from pyscrapy.loader.family_circle_loader import FamilyCircleLoader
 from datetime import datetime
 from scrapy.contrib.linkextractors import LinkExtractor
 from scrapy.contrib.spiders import Rule
 
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
 from scrapy.contrib.spiders import CrawlSpider
-
 class familycircle(CrawlSpider):
-    name = 'familycircle'
+    name = 'family_circle'
     start_urls = [
                 'http://www.familycircle.com/recipe/search/'
     ]
@@ -27,3 +31,6 @@ class familycircle(CrawlSpider):
             )
     def parse_item(self,response):
         print (response.url)
+        loader = FamilyCircleLoader(
+                item=RecipeItem(), response=response
+                )
