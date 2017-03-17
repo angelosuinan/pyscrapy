@@ -14,7 +14,7 @@ class SpiderItem(Item):
 
 class RecipeItem(SpiderItem):
     name = Field(serializers=unicode, required=True)
-    price = Field(serializers=float, required=True)
+    #no price var because there is no ingredients price
     description = Field(serializers=unicode,)
     img_url = Field(serializers=unicode,)
     prep_time = Field(serializers=unicode,)

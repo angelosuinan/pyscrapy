@@ -1,6 +1,6 @@
-from scrapy.contrib.loader import ItemLoader
+from scrapy.loader import ItemLoader
 
-from scrapy.contrib.loader.processor import Join, MapCompose
+from scrapy.loader.processors import Join, MapCompose
 
 
 
