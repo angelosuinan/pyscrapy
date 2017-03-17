@@ -6,7 +6,7 @@ import re
 
 
 
-from scrapy.loader.processors import Identity, Compose, MapCompose
+from scrapy.loader.processors import Identity, Compose, MapCompose, Join
 
 
 
@@ -25,15 +25,16 @@ def get_servings(value):
     value[0]=' '.join(value[0].split())
     return value
 
-def get_products(value):
-    print (value)
-
 def get_ingredients(value):
-    print (value)
+    plus = int(len(value)/3)
+    limit = int(len(value)*1/3)
+    return value
+def fix_ingredients(value):
+    pass
 class FamilyCircleLoader(SpiderLoader):
     name_out = Identity()
     img_url_out = Identity()
     direction_out = Compose(get_direction)
     servings_out = Compose(get_servings)
-    products_out = Compose(get_products)
-    ingredients_in = Compose(get_ingredients)
+    products_out = Identity()
+    ingredients_out = Compose(get_ingredients)
